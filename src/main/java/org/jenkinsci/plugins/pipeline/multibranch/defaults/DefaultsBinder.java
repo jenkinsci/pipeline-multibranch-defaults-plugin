@@ -30,11 +30,11 @@ import hudson.model.Action;
 import hudson.model.Descriptor;
 import hudson.model.DescriptorVisibilityFilter;
 import hudson.model.Queue;
+import hudson.model.Run;
 import hudson.model.TaskListener;
 import jenkins.model.Jenkins;
 import org.jenkinsci.lib.configprovider.model.Config;
-import org.jenkinsci.plugins.configfiles.ConfigFileStore;
-import org.jenkinsci.plugins.configfiles.GlobalConfigFiles;
+import org.jenkinsci.plugins.configfiles.ConfigFiles;
 import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinition;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinitionDescriptor;
@@ -46,10 +46,11 @@ import org.jenkinsci.plugins.workflow.job.WorkflowRun;
 import java.util.List;
 
 /**
- * Checks out the local default version of {@link WorkflowBranchProjectFactory#SCRIPT} in order if exist:
+ * Checks out the local default version of {@link WorkflowBranchProjectFactory#scriptPath} in order if exist:
  * 1. From module checkout
- * 1. From task workspace directory
- * 2. From global jenkins managed files
+ * 2. From task workspace directory
+ * 3. From the Job's ConfigFileProvider
+ * 4. From global jenkins managed files
  */
 class DefaultsBinder extends FlowDefinition {
 
@@ -71,18 +72,14 @@ class DefaultsBinder extends FlowDefinition {
         if (!(exec instanceof WorkflowRun)) {
             throw new IllegalStateException("inappropriate context");
         }
-
-        ConfigFileStore store = GlobalConfigFiles.get();
-        if (store != null) {
-            Config config = store.getById(scriptId);
-            if (config != null) {
-                if (useSandbox) {
-                    listener.getLogger().println("Running with default Jenkinsfile ID: " + scriptId + "; within Groovy sandbox.");
-                } else {
-                    listener.getLogger().println("Running with default Jenkinsfile ID: " + scriptId);
-                }
-                return new CpsFlowDefinition(config.content, useSandbox).create(handle, listener, actions);
+        Config config = ConfigFiles.getByIdOrNull((Run<?, ?>) exec, scriptId);
+        if (config != null) {
+            if (useSandbox) {
+                listener.getLogger().println("Running with default Jenkinsfile ID: " + scriptId + "; within Groovy sandbox.");
+            } else {
+                listener.getLogger().println("Running with default Jenkinsfile ID: " + scriptId);
             }
+            return new CpsFlowDefinition(config.content, useSandbox).create(handle, listener, actions);
         }
         throw new IllegalArgumentException("Default " + PipelineBranchDefaultsProjectFactory.SCRIPT + " not found. Check configuration.");
     }
