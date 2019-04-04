@@ -65,7 +65,7 @@ console][script-console].
 
 # How it works
 
-Configuration files will be reference from the global Jenkins script store
+Configuration files will be referenced from the global Jenkins script store
 provided by the [config-file provider plugin][config-file-provider].  If a
 multibranch pipeline is configured to use a default `Jenkinsfile`, then the
 following happens:
@@ -75,7 +75,7 @@ following happens:
 - Every pull request discovered is assumed to have a `Jenkinsfile` because of
   the default `Jenkinsfile` setting.
 - When discover tags is enabled, every tag is assumed to have a `Jenkinsfile`
-  bacuse of the default `Jenkinsfile` setting.
+  because of the default `Jenkinsfile` setting.
 
 # How to configure
 
