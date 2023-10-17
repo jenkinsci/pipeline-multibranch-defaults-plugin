@@ -41,9 +41,6 @@ THE SOFTWARE.
     <packaging>hpi</packaging>
     <name>Pipeline: Multibranch with defaults</name>
     <url>https://github.com/jenkinsci/pipeline-multibranch-defaults-plugin</url>
-    <description>Enhances Pipeline plugin to handle branches better by automatically grouping builds from different
-        branches. Supports enable one default pipeline
-    </description>
     <licenses>
         <license>
             <name>MIT License</name>
