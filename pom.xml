@@ -29,12 +29,11 @@ THE SOFTWARE.
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>3.19</version>
+        <version>4.74</version>
         <relativePath />
     </parent>
     <properties>
-        <jenkins.version>2.130</jenkins.version>
-        <java.level>8</java.level>
+        <jenkins.version>2.361.4</jenkins.version>
     </properties>
     <artifactId>pipeline-multibranch-defaults</artifactId>
     <version>2.2-SNAPSHOT</version>
@@ -72,102 +71,92 @@ THE SOFTWARE.
             <url>https://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.jenkins.tools.bom</groupId>
+                <artifactId>bom-2.361.x</artifactId>
+                <version>2102.v854b_fec19c92</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
     <!-- MINIMUM REQUIRED DEPENDENCIES -->
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-cps</artifactId>
-            <version>2.56</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-aggregator</artifactId>
-            <version>2.5</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>config-file-provider</artifactId>
-            <version>3.2</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-api</artifactId>
-            <version>2.29</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>scm-api</artifactId>
-            <version>2.2.8</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-job</artifactId>
-            <version>2.25</version>
         </dependency>
     <!-- END REQUIRED DEPENDENCIES -->
     <!-- REQUIRED BY TESTS -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>git</artifactId>
-            <version>3.9.1</version>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>git</artifactId>
-            <version>3.9.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>scm-api</artifactId>
-            <version>2.2.8</version>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.main</groupId>
             <artifactId>jenkins-test-harness</artifactId>
-            <version>2.42</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-support</artifactId>
-            <version>2.20</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-support</artifactId>
-            <version>2.20</version>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-basic-steps</artifactId>
-            <version>2.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-cps-global-lib</artifactId>
-            <version>2.11</version>
+            <groupId>io.jenkins.plugins</groupId>
+            <artifactId>pipeline-groovy-lib</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-durable-task-step</artifactId>
-            <version>2.22</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>junit</artifactId>
-            <version>1.26.1</version>
             <scope>test</scope>
         </dependency>
     <!-- END REQUIRED BY TESTS -->
@@ -175,36 +164,30 @@ THE SOFTWARE.
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-multibranch</artifactId>
-            <version>2.20</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>branch-api</artifactId>
-            <version>2.0.20</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>cloudbees-folder</artifactId>
-            <version>6.6</version>
         </dependency>
     <!-- END UNNECESSARILY REQUIRED DEPENDENCIES -->
     <!-- UNNECESSARILY REQUIRED TEST DEPS BY CREATING A NEW JOB TYPE -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>credentials</artifactId>
-            <version>2.1.18</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>ssh-credentials</artifactId>
-            <version>1.14</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-step-api</artifactId>
-            <version>2.16</version>
             <scope>test</scope>
         </dependency>
     <!-- END UNNECESSARILY REQUIRED BY TESTS -->
