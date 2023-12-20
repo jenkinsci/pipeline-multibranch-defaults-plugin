@@ -1,0 +1,5 @@
+<?jelly escape-by-default='true'?>
+<div>
+Enhances Pipeline plugin to handle branches better by automatically grouping builds from different branches.
+Supports enable one default pipeline.
+</div>
