@@ -25,6 +25,7 @@
 
 package org.jenkinsci.plugins.pipeline.multibranch.defaults;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.TaskListener;
 import jenkins.scm.api.SCMSource;
@@ -35,7 +36,6 @@ import org.jenkinsci.plugins.workflow.multibranch.AbstractWorkflowBranchProjectF
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 
 /**
@@ -122,7 +122,7 @@ public class PipelineBranchDefaultsProjectFactory extends AbstractWorkflowBranch
 
     @Extension
     public static class DescriptorImpl extends AbstractWorkflowBranchProjectFactoryDescriptor {
-        @Nonnull
+        @NonNull
         @Override
         public String getDisplayName() {
             return "by default " + SCRIPT;
