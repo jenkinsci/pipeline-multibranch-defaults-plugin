@@ -25,6 +25,7 @@
 package org.jenkinsci.plugins.pipeline.multibranch.defaults;
 
 import com.cloudbees.hudson.plugins.folder.computed.FolderComputation;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import org.jenkinsci.plugins.pipeline.multibranch.defaults.PipelineBranchDefaultsProjectFactory;
 import org.jenkinsci.plugins.pipeline.multibranch.defaults.PipelineMultiBranchDefaultsProject;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
@@ -32,8 +33,6 @@ import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
 import org.junit.Rule;
 import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsRule;
-
-import javax.annotation.Nonnull;
 
 import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertTrue;
@@ -53,15 +52,15 @@ public class PipelineMultiBranchDefaultsProjectTest {
 
 
     public static
-    @Nonnull
-    WorkflowJob scheduleAndFindBranchProject(@Nonnull WorkflowMultiBranchProject mp, @Nonnull String name) throws Exception {
+    @NonNull
+    WorkflowJob scheduleAndFindBranchProject(@NonNull WorkflowMultiBranchProject mp, @NonNull String name) throws Exception {
         mp.scheduleBuild2(0).getFuture().get();
         return findBranchProject(mp, name);
     }
 
     public static
-    @Nonnull
-    WorkflowJob findBranchProject(@Nonnull WorkflowMultiBranchProject mp, @Nonnull String name) throws Exception {
+    @NonNull
+    WorkflowJob findBranchProject(@NonNull WorkflowMultiBranchProject mp, @NonNull String name) throws Exception {
         WorkflowJob p = mp.getItem(name);
         showIndexing(mp);
         if (p == null) {
@@ -70,7 +69,7 @@ public class PipelineMultiBranchDefaultsProjectTest {
         return p;
     }
 
-    static void showIndexing(@Nonnull WorkflowMultiBranchProject mp) throws Exception {
+    static void showIndexing(@NonNull WorkflowMultiBranchProject mp) throws Exception {
         FolderComputation<?> indexing = mp.getIndexing();
         System.out.println("---%<--- " + indexing.getUrl());
         indexing.writeWholeLogTo(System.out);

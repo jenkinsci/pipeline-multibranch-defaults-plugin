@@ -25,6 +25,7 @@
 
 package org.jenkinsci.plugins.pipeline.multibranch.defaults;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.Action;
 import hudson.model.Item;
@@ -43,7 +44,6 @@ import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -165,7 +165,7 @@ public class PipelineMultiBranchDefaultsProjectFactory extends MultiBranchProjec
             return null;
         }
 
-        @Nonnull
+        @NonNull
         @Override
         public String getDisplayName() {
             return "by default " + SCRIPT;

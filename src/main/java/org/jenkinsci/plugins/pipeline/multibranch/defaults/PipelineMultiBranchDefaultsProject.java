@@ -24,6 +24,7 @@
 
 package org.jenkinsci.plugins.pipeline.multibranch.defaults;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.model.ItemGroup;
 import hudson.model.TopLevelItem;
@@ -31,8 +32,6 @@ import jenkins.branch.BranchProjectFactory;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 import org.jenkinsci.plugins.workflow.job.WorkflowRun;
 import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
-
-import javax.annotation.Nonnull;
 
 /**
  * Representation of a set of workflows keyed off of source branches.
@@ -44,7 +43,7 @@ public class PipelineMultiBranchDefaultsProject extends WorkflowMultiBranchProje
         super(parent, name);
     }
 
-    @Nonnull
+    @NonNull
     protected BranchProjectFactory<WorkflowJob, WorkflowRun> newProjectFactory() {
         return new PipelineBranchDefaultsProjectFactory();
     }
@@ -52,7 +51,7 @@ public class PipelineMultiBranchDefaultsProject extends WorkflowMultiBranchProje
     @Extension
     public static class DescriptorImpl extends WorkflowMultiBranchProject.DescriptorImpl {
 
-        @Nonnull
+        @NonNull
         @Override
         public String getDisplayName() {
             return DefaultsMessages.PipelineMultiBranchDefaultsProject_DisplayName();
