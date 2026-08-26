@@ -30,7 +30,6 @@ import hudson.Extension;
 import hudson.model.TaskListener;
 import jenkins.scm.api.SCMSource;
 import jenkins.scm.api.SCMSourceCriteria;
-import org.apache.commons.lang.StringUtils;
 import org.jenkinsci.plugins.workflow.flow.FlowDefinition;
 import org.jenkinsci.plugins.workflow.multibranch.AbstractWorkflowBranchProjectFactory;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -58,7 +57,7 @@ public class PipelineBranchDefaultsProjectFactory extends AbstractWorkflowBranch
      */
     @DataBoundSetter
     public void setScriptId(String scriptId) {
-        if(StringUtils.isEmpty(scriptId)) {
+        if (scriptId == null || scriptId.isEmpty()) {
             this.scriptId = SCRIPT;
         } else {
             this.scriptId = scriptId;

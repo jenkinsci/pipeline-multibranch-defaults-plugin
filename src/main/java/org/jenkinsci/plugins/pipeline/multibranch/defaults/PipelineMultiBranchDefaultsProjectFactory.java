@@ -38,7 +38,6 @@ import jenkins.branch.OrganizationFolder;
 import jenkins.model.TransientActionFactory;
 import jenkins.scm.api.SCMSource;
 import jenkins.scm.api.SCMSourceCriteria;
-import org.apache.commons.lang.StringUtils;
 import org.jenkinsci.plugins.workflow.cps.Snippetizer;
 import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -69,7 +68,7 @@ public class PipelineMultiBranchDefaultsProjectFactory extends MultiBranchProjec
      */
     @DataBoundSetter
     public void setScriptId(String scriptId) {
-        if(StringUtils.isEmpty(scriptId)) {
+        if (scriptId == null || scriptId.isEmpty()) {
             this.scriptId = SCRIPT;
         } else {
             this.scriptId = scriptId;
