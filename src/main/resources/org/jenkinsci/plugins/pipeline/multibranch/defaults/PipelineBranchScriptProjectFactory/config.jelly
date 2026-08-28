@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:wfe="/org/jenkinsci/plugins/workflow/editor">
+    <f:entry title="${%Pipeline script}" field="pipelineScript">
+        <wfe:workflow-editor />
+    </f:entry>
+    <f:entry title="${%Use Groovy Sandbox}" field="useSandbox">
+        <f:checkbox name="useSandbox" checked="${instance.useSandbox}" default="false" />
+    </f:entry>
+</j:jelly>
