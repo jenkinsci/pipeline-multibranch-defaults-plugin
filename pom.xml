@@ -33,11 +33,14 @@ THE SOFTWARE.
         <relativePath />
     </parent>
     <properties>
+        <revision>2.2</revision>
+        <changelist>-SNAPSHOT</changelist>
+        <gitHubRepo>jenkinsci/pipeline-multibranch-defaults-plugin</gitHubRepo>
         <jenkins.baseline>2.516</jenkins.baseline>
         <jenkins.version>${jenkins.baseline}.3</jenkins.version>
     </properties>
     <artifactId>pipeline-multibranch-defaults</artifactId>
-    <version>2.2-SNAPSHOT</version>
+    <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <name>Pipeline: Multibranch with defaults</name>
     <url>https://github.com/jenkinsci/pipeline-multibranch-defaults-plugin</url>
@@ -55,10 +58,10 @@ THE SOFTWARE.
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
-        <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-        <tag>HEAD</tag>
+        <connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
+        <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
+        <url>https://github.com/${gitHubRepo}</url>
+        <tag>${scmTag}</tag>
     </scm>
     <repositories>
         <repository>
